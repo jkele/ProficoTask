@@ -18,6 +18,7 @@ class OnboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         binding.rvGenres.layoutManager = LinearLayoutManager(this)
 

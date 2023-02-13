@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="240dp"
-    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
     android:background="@drawable/background_genre_item_view">
 
     <TextView
@@ -14,17 +14,52 @@
         android:layout_marginTop="16dp"
         android:textColor="@color/white"
         android:theme="@style/HeadlineLargeNLv1Center"
+        android:translationZ="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Action" />
 
-    <ImageView
-        android:id="@+id/ivGenreImage"
-        android:scaleType="fitXY"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/imageContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:backgroundTint="@android:color/transparent"
+        app:cardCornerRadius="16dp">
 
+        <ImageView
+            android:id="@+id/ivGenreImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvPopularGameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/popular_game"
+        android:textColor="@color/white"
+        android:theme="@style/BodyMediumNLv1Left"
+        android:translationZ="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPopularGame"
+        android:layout_width="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/white"
+        android:theme="@style/BodyMediumNLv1Left"
+        android:translationZ="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvPopularGameLabel"
+        tools:text="The Witcher 3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

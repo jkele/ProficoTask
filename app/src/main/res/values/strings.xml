@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ProficoTask</string>
     <string name="select_genres">Select genres</string>
+    <string name="popular_game">Popular game:</string>
 </resources>
