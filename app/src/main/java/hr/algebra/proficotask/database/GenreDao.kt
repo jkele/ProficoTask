@@ -1,10 +1,7 @@
 package hr.algebra.proficotask.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import hr.algebra.proficotask.database.model.GenreDb
 
 @Dao
@@ -15,5 +12,8 @@ interface GenreDao {
 
     @Query("SELECT * FROM genres")
     fun getGenres(): LiveData<List<GenreDb>>
+
+    @Query("DELETE FROM genres WHERE id = :genreId")
+    suspend fun deleteGenreById(genreId: Int)
 
 }

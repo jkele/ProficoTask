@@ -23,8 +23,14 @@ class OnboardActivity : AppCompatActivity() {
         binding.rvGenres.layoutManager = LinearLayoutManager(this)
 
         viewModel.genreList.observe(this) { genreList ->
-            val adapter = GenreRecyclerAdapter(this, genreList)
+            val adapter = GenreRecyclerAdapter(this, genreList, {
+                viewModel.insertFavoriteGenre(it)
+            }, {
+                viewModel.deleteGenreById(it)
+            })
+
             binding.rvGenres.adapter = adapter
+
         }
 
         viewModel.getGenres()

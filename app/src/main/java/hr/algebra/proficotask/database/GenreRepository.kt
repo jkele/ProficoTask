@@ -10,4 +10,8 @@ class GenreRepository(private val genreDao: GenreDao) {
         genreDao.insertGenre(genre.convertForDb())
     }
 
+    suspend fun deleteGenreById(id: Int) {
+        genreDao.deleteGenreById(id)
+    }
+
 }
