@@ -28,15 +28,15 @@ class OnboardViewModel(application: Application): AndroidViewModel(application) 
     }
 
     fun insertFavoriteGenre(genre: Genre) {
-        viewModelScope.launch {
-            repository.insertGenre(genre)
-        }
+        repository.insertGenre(genre)
     }
 
     fun deleteGenreById(id: Int) {
-        viewModelScope.launch {
-            repository.deleteGenreById(id)
-        }
+        repository.deleteGenreById(id)
+    }
+
+    fun getNumberOfGenres(): Int {
+        return repository.getNumberOfGenres()
     }
 
 }

@@ -2,4 +2,8 @@
     <string name="app_name">ProficoTask</string>
     <string name="select_genres">Select genres</string>
     <string name="popular_game">Popular game:</string>
+    <string name="text_continue">Continue</string>
+    <string name="no_genres_selected">No genres selected</string>
+    <string name="one_genre_selected">1 genre selected</string>
+    <string name="genre_count_template">%d genres selected</string>
 </resources>

@@ -6,12 +6,16 @@ class GenreRepository(private val genreDao: GenreDao) {
 
     val readAllGenres = genreDao.getGenres()
 
-    suspend fun insertGenre(genre: Genre) {
+    fun insertGenre(genre: Genre) {
         genreDao.insertGenre(genre.convertForDb())
     }
 
-    suspend fun deleteGenreById(id: Int) {
+    fun deleteGenreById(id: Int) {
         genreDao.deleteGenreById(id)
+    }
+
+    fun getNumberOfGenres(): Int {
+        return genreDao.getNumberOfGenres()
     }
 
 }

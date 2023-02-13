@@ -28,5 +28,43 @@
         android:layout_marginTop="32dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
+    
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardOnboardMenu"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="64dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/background_onboard_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvGenresSelected"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="2 genres selected"
+                android:theme="@style/BodyLargeNLv1Left"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnContinue"
+                android:text="@string/text_continue"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
