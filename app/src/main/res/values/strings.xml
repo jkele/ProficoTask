@@ -7,4 +7,7 @@
     <string name="one_genre_selected">1 genre selected</string>
     <string name="genre_count_template">%d genres selected</string>
     <string name="games">Games</string>
+    <string name="web_client_id">640437404873-f86ohgol431a05e2e42ibvmj9giaroq6.apps.googleusercontent.com</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="try_without_an_account">Try without an account</string>
 </resources>

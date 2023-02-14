@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.google.firebase.auth.FirebaseAuth
 import hr.algebra.proficotask.databinding.ActivitySplashScreenBinding
 import hr.algebra.proficotask.helpers.callDelayed
 import hr.algebra.proficotask.helpers.startActivity
@@ -17,24 +18,30 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashScreenBinding
     private val viewModel: SplashScreenViewModel by viewModels()
+    val firebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         startAnimations()
         redirect()
     }
 
     private fun redirect() {
+        val isGenreTableEmpty = viewModel.isGenreTableEmpty()
         callDelayed(DELAY) {
-            if (!viewModel.isGenreTableEmpty()) {
-                this.startActivity<OnboardActivity>()
-            } else {
-                this.startActivity<MainActivity>()
+            if (firebaseAuth.currentUser == null) {
+                this.startActivity<LoginActivity>()
             }
-
+            if (firebaseAuth.currentUser != null && isGenreTableEmpty) {
+                this.startActivity<MainActivity>()
+            } else if(firebaseAuth.currentUser != null && !isGenreTableEmpty) {
+                this.startActivity<OnboardActivity>()
+            }
         }
     }
 

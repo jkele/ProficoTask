@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "640437404873",
+    "project_id": "proficotask",
+    "storage_bucket": "proficotask.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640437404873:android:22a60e79438d452aeeb918",
+        "android_client_info": {
+          "package_name": "hr.algebra.proficotask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640437404873-f86ohgol431a05e2e42ibvmj9giaroq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAulu0hmYcnGuhpDPbo8tH3EGWaECAn6PI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640437404873-cpgkhf136nkp5nfnt7gct58s3f1mkcqg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
