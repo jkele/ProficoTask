@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProficoTask">
         <activity
+            android:name=".OnboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".OnboardActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

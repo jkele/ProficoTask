@@ -23,4 +23,8 @@ class GenreRepository(private val genreDao: GenreDao) {
         return genreDao.getNumberOfGenres()
     }
 
+    fun isGenreTableEmpty(): Boolean {
+        return genreDao.getNumberOfGenres() > 0
+    }
+
 }
