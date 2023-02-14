@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
+import hr.algebra.proficotask.GameActivity
 import hr.algebra.proficotask.R
 import hr.algebra.proficotask.databinding.GameItemViewBinding
+import hr.algebra.proficotask.helpers.startActivity
 import hr.algebra.proficotask.network.model.Game
 
 class GamePagingAdapter(
@@ -28,6 +30,10 @@ class GamePagingAdapter(
         holder.binding.tvGameTitle.text = game?.name
         holder.binding.ivGameImage.load(game?.backgroundImage){
             transformations(RoundedCornersTransformation(topLeft = 32f, topRight = 32f))
+        }
+
+        holder.binding.root.setOnClickListener {
+            context.startActivity<GameActivity>()
         }
     }
 

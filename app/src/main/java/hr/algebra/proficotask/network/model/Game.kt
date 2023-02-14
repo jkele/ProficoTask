@@ -12,7 +12,10 @@ data class Game(
     val metacritic: Int,
     val genres: ArrayList<GameGenre>,
     @SerializedName("short_screenshots")
-    val gameScreenshots: ArrayList<GameScreenshot>
+    val gameScreenshots: ArrayList<GameScreenshot>,
+    val description: String,
+    @SerializedName("description_raw")
+    val descriptionRaw: String
 ) {
 }
 

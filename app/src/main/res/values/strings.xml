@@ -10,4 +10,9 @@
     <string name="web_client_id">640437404873-f86ohgol431a05e2e42ibvmj9giaroq6.apps.googleusercontent.com</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="try_without_an_account">Try without an account</string>
+    <string name="about">About</string>
+    <string name="platforms">Platforms</string>
+    <string name="metacritic">Metacritic</string>
+    <string name="rating">Rating</string>
+    <string name="game_screenshots">Game screenshots</string>
 </resources>
