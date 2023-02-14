@@ -11,7 +11,7 @@ interface GenreDao {
     fun insertGenre(genre: GenreDb)
 
     @Query("SELECT * FROM genres")
-    fun getGenres(): LiveData<List<GenreDb>>
+    fun getGenres(): List<GenreDb>
 
     @Query("DELETE FROM genres WHERE id = :genreId")
     fun deleteGenreById(genreId: Int)

@@ -6,4 +6,5 @@
     <string name="no_genres_selected">No genres selected</string>
     <string name="one_genre_selected">1 genre selected</string>
     <string name="genre_count_template">%d genres selected</string>
+    <string name="games">Games</string>
 </resources>
