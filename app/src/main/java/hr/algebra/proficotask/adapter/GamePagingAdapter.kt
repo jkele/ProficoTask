@@ -33,7 +33,7 @@ class GamePagingAdapter(
         }
 
         holder.binding.root.setOnClickListener {
-            context.startActivity<GameActivity>()
+            context.startActivity<GameActivity>(game!!.id)
         }
     }
 

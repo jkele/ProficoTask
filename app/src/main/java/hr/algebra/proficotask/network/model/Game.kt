@@ -15,7 +15,9 @@ data class Game(
     val gameScreenshots: ArrayList<GameScreenshot>,
     val description: String,
     @SerializedName("description_raw")
-    val descriptionRaw: String
+    val descriptionRaw: String,
+    val developers: ArrayList<Developer>,
+    val platforms: ArrayList<PlatformResponse>
 ) {
 }
 

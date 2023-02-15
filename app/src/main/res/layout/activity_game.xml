@@ -27,7 +27,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:textColor="@color/white"
-            android:textSize="60sp"
+            android:textSize="50sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/ivGameImage"
             tools:text="Dead Space" />
@@ -40,6 +40,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/metacritic"
             android:textColor="#414444"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvGameTitle" />
 
@@ -49,11 +50,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:textColor="@color/white"
             android:theme="@style/HeadlineLargeNLv1Left"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvMetacriticLabel"
-            tools:text="91"
-            android:textColor="@color/white" />
+            tools:text="91" />
 
         <TextView
             android:id="@+id/tvRatingLabel"
@@ -63,6 +64,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/rating"
             android:textColor="#414444"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvGameTitle" />
 
@@ -110,6 +112,7 @@
             android:layout_marginTop="32dp"
             android:text="@string/platforms"
             android:textColor="#414444"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvAbout" />
 
@@ -125,6 +128,29 @@
             tools:text="PC, Xbox Series S/X, PlayStation 5" />
 
         <TextView
+            android:id="@+id/tvGenresLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/genres"
+            android:textColor="#414444"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPlatforms" />
+
+        <TextView
+            android:id="@+id/tvGenres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tvGenresLabel"
+            tools:text="PC, Xbox Series S/X, PlayStation 5" />
+
+        <TextView
             android:id="@+id/tvScreenshotsLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -134,7 +160,7 @@
             android:text="@string/game_screenshots"
             android:textColor="@color/white"
             android:theme="@style/HeadlineLargeNLv1Left"
-            app:layout_constraintTop_toBottomOf="@id/tvPlatforms" />
+            app:layout_constraintTop_toBottomOf="@id/tvGenres" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardContainer"
@@ -160,6 +186,18 @@
                 android:layout_height="match_parent" />
 
         </androidx.cardview.widget.CardView>
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/imageIndicator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/cardContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="16dp"
+            android:elevation="2dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
