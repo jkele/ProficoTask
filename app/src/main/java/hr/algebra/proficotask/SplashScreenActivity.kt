@@ -36,11 +36,14 @@ class SplashScreenActivity : AppCompatActivity() {
         callDelayed(DELAY) {
             if (firebaseAuth.currentUser == null) {
                 this.startActivity<LoginActivity>()
+                finish()
             }
             if (firebaseAuth.currentUser != null && isGenreTableEmpty) {
                 this.startActivity<MainActivity>()
+                finish()
             } else if(firebaseAuth.currentUser != null && !isGenreTableEmpty) {
                 this.startActivity<OnboardActivity>()
+                finish()
             }
         }
     }

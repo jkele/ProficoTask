@@ -57,6 +57,11 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun setupListeners(genresList: ArrayList<Genre>) {
 
+        binding.btnLogOut.setOnClickListener {
+            mAuth.signOut()
+            this.startActivity<LoginActivity>()
+        }
+
         binding.btnSaveChanges.setOnClickListener {
             this.startActivity<MainActivity>()
         }

@@ -12,7 +12,7 @@ const val EXTRA_GAME_ID = "hr.algebra.proficotask.helpers.extraGameId"
 
 inline fun<reified T : Activity> Context.startActivity()
         = startActivity(Intent(this, T::class.java).apply {
-    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 })
 
 inline fun<reified T : Activity> Context.startActivity(id: Int)

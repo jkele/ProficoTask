@@ -33,6 +33,7 @@ class FavoriteGenreRecyclerAdapter(
     }
 
     fun submitList(newFavoriteGenresList: ArrayList<GenreDb>) {
+        newFavoriteGenresList.sortBy { it.name }
         this.favoriteGenresList.clear()
         this.favoriteGenresList.addAll(newFavoriteGenresList)
         notifyDataSetChanged()
