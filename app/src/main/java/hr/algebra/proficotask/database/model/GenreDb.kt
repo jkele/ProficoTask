@@ -11,5 +11,6 @@ data class GenreDb(
     @PrimaryKey
     val id: Int,
     val name: String,
-    val imageBackground: String
+    val imageBackground: String,
+    val userId: String
 ): Serializable

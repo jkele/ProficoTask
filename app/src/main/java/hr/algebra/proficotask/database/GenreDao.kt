@@ -13,6 +13,12 @@ interface GenreDao {
     @Query("SELECT * FROM genres")
     fun getGenres(): List<GenreDb>
 
+    @Query("SELECT * FROM genres WHERE userId = :userId")
+    fun getLiveGenresForUser(userId: String): LiveData<List<GenreDb>>
+
+    @Query("SELECT * FROM genres WHERE userId = :userId")
+    fun getGenresForUser(userId: String): List<GenreDb>
+
     @Query("DELETE FROM genres WHERE id = :genreId")
     fun deleteGenreById(genreId: Int)
 

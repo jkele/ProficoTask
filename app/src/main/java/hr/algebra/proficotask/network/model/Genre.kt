@@ -11,8 +11,8 @@ data class Genre(
     val games: ArrayList<GenreGame>
 ) {
 
-    fun convertForDb(): GenreDb {
-        return GenreDb(id, name, imageBackground)
+    fun convertForDb(userId: String): GenreDb {
+        return GenreDb(id, name, imageBackground, userId)
     }
 
 }

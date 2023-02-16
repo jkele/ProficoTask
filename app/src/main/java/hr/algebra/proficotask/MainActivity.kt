@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import hr.algebra.proficotask.adapter.GamePagingAdapter
 import hr.algebra.proficotask.database.model.GenreDb
 import hr.algebra.proficotask.databinding.ActivityMainBinding
+import hr.algebra.proficotask.helpers.startActivity
 import hr.algebra.proficotask.network.paging.GameDiff
 import hr.algebra.proficotask.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupListeners()
 
         favoriteGenresList = viewModel.getFavoriteGenres()
 
@@ -36,6 +38,12 @@ class MainActivity : AppCompatActivity() {
             flow.collectLatest {
                 pagingAdapter.submitData(it)
             }
+        }
+    }
+
+    private fun setupListeners() {
+        binding.btnSettings.setOnClickListener {
+            this.startActivity<SettingsActivity>()
         }
     }
 

@@ -16,4 +16,9 @@
     <string name="rating">Rating</string>
     <string name="game_screenshots">Game screenshots</string>
     <string name="genres">Genres</string>
+    <string name="settings">Settings</string>
+    <string name="save_changes">Save changes</string>
+    <string name="favorite_genres">Favorite genres</string>
+    <string name="manage_genres">Manage genres</string>
+    <string name="manage">Manage</string>
 </resources>

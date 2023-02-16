@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import hr.algebra.proficotask.adapter.GenreRecyclerAdapter
 import hr.algebra.proficotask.databinding.ActivityOnboardingBinding
 import hr.algebra.proficotask.viewmodel.OnboardViewModel
@@ -14,6 +15,8 @@ class OnboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardingBinding
     val viewModel: OnboardViewModel by viewModels()
 
+    private lateinit var mAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
@@ -22,11 +25,13 @@ class OnboardActivity : AppCompatActivity() {
         setupMenu()
         setupListeners()
 
+        mAuth = FirebaseAuth.getInstance()
+
         binding.rvGenres.layoutManager = LinearLayoutManager(this)
 
         viewModel.genreList.observe(this) { genreList ->
             val adapter = GenreRecyclerAdapter(this, genreList, {
-                viewModel.insertFavoriteGenre(it)
+                viewModel.insertFavoriteGenre(it, mAuth.currentUser!!.uid)
                 setupMenu()
             }, {
                 viewModel.deleteGenreById(it)
