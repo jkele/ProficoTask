@@ -11,6 +11,7 @@ import hr.algebra.proficotask.adapter.FavoriteGenreRecyclerAdapter
 import hr.algebra.proficotask.bottomsheet.ManageGenresBottomsheet
 import hr.algebra.proficotask.database.model.GenreDb
 import hr.algebra.proficotask.databinding.ActivitySettingsBinding
+import hr.algebra.proficotask.helpers.startActivity
 import hr.algebra.proficotask.network.model.Genre
 import hr.algebra.proficotask.viewmodel.SettingsViewModel
 
@@ -20,6 +21,21 @@ class SettingsActivity : AppCompatActivity() {
     private val viewModel: SettingsViewModel by viewModels()
     private lateinit var mAuth: FirebaseAuth
 
+    private val adapter:  FavoriteGenreRecyclerAdapter by lazy {
+        FavoriteGenreRecyclerAdapter(
+            this,
+            viewModel.getGenresForUser(mAuth.currentUser!!.uid),
+            null,
+            FAVORITE_GENRES,
+            {
+                viewModel.insertFavoriteGenre(it, mAuth.currentUser!!.uid)
+            },
+            {
+                viewModel.deleteFavoriteGenre(it)
+            }
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
@@ -27,25 +43,10 @@ class SettingsActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
 
         binding.rvFavoriteGenres.layoutManager = LinearLayoutManager(this)
-
-        val adapter =
-            FavoriteGenreRecyclerAdapter(
-                this,
-                viewModel.getGenresForUser(mAuth.currentUser!!.uid),
-                null,
-                FAVORITE_GENRES,
-                {
-                    viewModel.insertFavoriteGenre(it, mAuth.currentUser!!.uid)
-                },
-                {
-                    viewModel.deleteFavoriteGenre(it)
-                })
         binding.rvFavoriteGenres.adapter = adapter
-
 
         viewModel.getLiveGenresForUser(mAuth.currentUser!!.uid).observe(this) { favoriteGenres ->
             adapter.submitList(favoriteGenres as ArrayList<GenreDb>)
-            //setupListeners(viewModel.getGenresForUser(mAuth.currentUser!!.uid))
         }
 
         viewModel.allGenresList.observe(this) { allGenres ->
@@ -55,6 +56,10 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun setupListeners(genresList: ArrayList<Genre>) {
+
+        binding.btnSaveChanges.setOnClickListener {
+            this.startActivity<MainActivity>()
+        }
 
         binding.btnManageGenres.setOnClickListener {
             val adapter =
