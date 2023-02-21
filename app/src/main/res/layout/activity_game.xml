@@ -33,19 +33,19 @@
             tools:text="Dead Space" />
 
         <TextView
-            android:id="@+id/tvMetacriticLabel"
+            android:id="@+id/tvReleaseDateLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/metacritic"
+            android:text="@string/release_date"
             android:textColor="#414444"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvGameTitle" />
 
         <TextView
-            android:id="@+id/tvMetacritic"
+            android:id="@+id/tvReleaseDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -53,32 +53,32 @@
             android:textColor="@color/white"
             android:theme="@style/HeadlineLargeNLv1Left"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvMetacriticLabel"
-            tools:text="91" />
+            app:layout_constraintTop_toBottomOf="@id/tvReleaseDateLabel"
+            tools:text="24.01.2022" />
 
         <TextView
-            android:id="@+id/tvRatingLabel"
+            android:id="@+id/tvMetacriticLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="128dp"
             android:layout_marginTop="16dp"
-            android:text="@string/rating"
+            android:text="@string/metacritic"
             android:textColor="#414444"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvMetacritic"
             app:layout_constraintTop_toBottomOf="@id/tvGameTitle" />
 
         <TextView
-            android:id="@+id/tvRating"
+            android:id="@+id/tvMetacritic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="128dp"
+            android:layout_marginEnd="128dp"
             android:layout_marginTop="8dp"
+            android:textColor="@color/white"
             android:theme="@style/HeadlineLargeNLv1Left"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvRatingLabel"
-            tools:text="4.41"
-            tools:textColor="@color/white" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMetacriticLabel"
+            tools:text="91" />
+
 
 
         <TextView
@@ -189,15 +189,15 @@
 
         <me.relex.circleindicator.CircleIndicator
             android:id="@+id/imageIndicator"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintTop_toBottomOf="@id/cardContainer"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_gravity="bottom"
             android:layout_marginStart="16dp"
-            android:elevation="2dp" />
+            android:layout_marginBottom="8dp"
+            android:elevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardContainer" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,6 @@ package hr.algebra.proficotask.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import hr.algebra.proficotask.database.GenreDatabase
 import hr.algebra.proficotask.database.GenreRepository
@@ -35,8 +34,8 @@ class OnboardViewModel(application: Application): AndroidViewModel(application) 
         repository.deleteGenreById(id)
     }
 
-    fun getNumberOfGenres(): Int {
-        return repository.getNumberOfGenres()
+    fun getNumberOfGenresForUser(userId: String): Int {
+        return repository.getNumberOfGenresForUser(userId)
     }
 
 }

@@ -12,7 +12,7 @@ data class Genre(
 ) {
 
     fun convertForDb(userId: String): GenreDb {
-        return GenreDb(id, name, imageBackground, userId)
+        return GenreDb(id = id, name = name, imageBackground = imageBackground, userId = userId)
     }
 
 }

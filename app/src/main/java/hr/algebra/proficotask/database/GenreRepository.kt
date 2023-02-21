@@ -6,13 +6,6 @@ import hr.algebra.proficotask.network.model.Genre
 
 class GenreRepository(private val genreDao: GenreDao) {
 
-    //val readAllGenres = genreDao.getGenres()
-
-
-    fun getFavoriteGenres(): ArrayList<GenreDb> {
-        return genreDao.getGenres() as ArrayList<GenreDb>
-    }
-
     fun getLiveFavoriteGenresForUser(userId: String): LiveData<List<GenreDb>> {
         return genreDao.getLiveGenresForUser(userId)
     }
@@ -29,12 +22,12 @@ class GenreRepository(private val genreDao: GenreDao) {
         genreDao.deleteGenreById(id)
     }
 
-    fun getNumberOfGenres(): Int {
-        return genreDao.getNumberOfGenres()
+    fun getNumberOfGenresForUser(userId: String): Int {
+        return genreDao.getNumberOfGenresForUser(userId)
     }
 
-    fun isGenreTableEmpty(): Boolean {
-        return genreDao.getNumberOfGenres() > 0
+    fun isGenreTableEmpty(userId: String): Boolean {
+        return genreDao.getNumberOfGenresForUser(userId) > 0
     }
 
 }

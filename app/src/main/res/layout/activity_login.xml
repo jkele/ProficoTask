@@ -9,20 +9,21 @@
 
     <ImageView
         android:id="@+id/ivLogo"
-        android:src="@drawable/logo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:src="@drawable/logo" />
+
 
     <Button
-        android:id="@+id/btnSignIn"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/black"
+        android:id="@+id/btnSignInGoogle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="80dp"
+        android:backgroundTint="@color/white"
         android:text="@string/sign_in_with_google"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

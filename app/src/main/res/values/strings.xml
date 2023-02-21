@@ -22,4 +22,7 @@
     <string name="manage_genres">Manage genres</string>
     <string name="manage">Manage</string>
     <string name="log_out">Log out</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="release_date">Release date</string>
 </resources>

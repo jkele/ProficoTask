@@ -22,7 +22,7 @@ abstract class GenreDatabase: RoomDatabase() {
         }
 
         private fun buildDatabase(context: Context): GenreDatabase =
-            Room.databaseBuilder(context, GenreDatabase::class.java, "GenreDatabase")
+            Room.databaseBuilder(context.applicationContext, GenreDatabase::class.java, "GenreDatabase")
                 .allowMainThreadQueries().build()
     }
 

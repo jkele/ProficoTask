@@ -1,5 +1,6 @@
 package hr.algebra.proficotask.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +33,7 @@ class FavoriteGenreRecyclerAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun submitList(newFavoriteGenresList: ArrayList<GenreDb>) {
         newFavoriteGenresList.sortBy { it.name }
         this.favoriteGenresList.clear()
@@ -58,16 +60,15 @@ class FavoriteGenreRecyclerAdapter(
             1 -> {
                 holder.binding.tvGenreName.text = allGenresList!![position].name
                 holder.binding.ivChecked.visibility = ImageView.GONE
+
                 val genreIsFavorite = favoriteStates[position] ?: false
 
-                //Pocetno postavljanje
                 if (genreIsFavorite) {
                     setItemForeground(holder)
                 } else {
                     removeItemForeground(holder)
                 }
 
-                //on click
                 holder.binding.root.setOnClickListener {
                     favoriteStates[position] = !genreIsFavorite
                     if (genreIsFavorite) {
@@ -95,7 +96,7 @@ class FavoriteGenreRecyclerAdapter(
 
     override fun getItemCount(): Int {
         return if (allGenresList.isNullOrEmpty()) {
-            favoriteGenresList!!.size
+            favoriteGenresList.size
         } else {
             allGenresList.size
         }

@@ -2,8 +2,6 @@ package hr.algebra.proficotask.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -14,11 +12,8 @@ import hr.algebra.proficotask.database.GenreRepository
 import hr.algebra.proficotask.database.model.GenreDb
 import hr.algebra.proficotask.network.Network
 import hr.algebra.proficotask.network.model.Game
-import hr.algebra.proficotask.network.model.Genre
 import hr.algebra.proficotask.network.paging.GamePagingSource
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
-import java.lang.StringBuilder
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
 
@@ -29,16 +24,15 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
         repository = GenreRepository(genreDao)
     }
 
-    fun getGamesFlow(): Flow<PagingData<Game>> {
+    fun getGamesFlow(userId: String): Flow<PagingData<Game>> {
         return Pager(PagingConfig(pageSize = 30)) {
-            GamePagingSource(Network().getGameService(), getGenreIds(getFavoriteGenres()))
+            GamePagingSource(Network().getGameService(), getGenreIds(getGenresForUser(userId)))
         }.flow.cachedIn(viewModelScope)
     }
 
-    fun getFavoriteGenres(): ArrayList<GenreDb> {
-        return repository.getFavoriteGenres()
+    fun getGenresForUser(userId: String): ArrayList<GenreDb> {
+        return repository.getFavoriteGenresForUser(userId) as ArrayList<GenreDb>
     }
-
 
     private fun getGenreIds(genreList: ArrayList<GenreDb>): String {
         val genreStringBuilder = StringBuilder()

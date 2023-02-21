@@ -1,9 +1,9 @@
 package hr.algebra.proficotask
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -19,13 +19,14 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     lateinit var mGoogleSignInClient: GoogleSignInClient
-    private val req_code = 123
-    private val firebaseAuth = FirebaseAuth.getInstance()
+    private val reqCode = 123
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        mAuth = FirebaseAuth.getInstance()
         binding.ivLogo.imageAlpha = 190
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -35,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        binding.btnSignIn.setOnClickListener {
+        binding.btnSignInGoogle.setOnClickListener {
             signInGoogle()
         }
 
@@ -43,13 +44,13 @@ class LoginActivity : AppCompatActivity() {
 
     private fun signInGoogle() {
         val signInIntent = mGoogleSignInClient.signInIntent
-        startActivityForResult(signInIntent, req_code)
+        startActivityForResult(signInIntent, reqCode)
     }
 
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == req_code) {
+        if (requestCode == reqCode) {
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleResult(task)
         }
@@ -68,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(account: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        firebaseAuth.signInWithCredential(credential).addOnCompleteListener { task ->
+        mAuth.signInWithCredential(credential).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val intent = Intent(this, OnboardActivity::class.java)
                 startActivity(intent)
@@ -77,9 +78,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
     override fun onStart() {
         super.onStart()
-        if (GoogleSignIn.getLastSignedInAccount(this) != null) {
+        if (mAuth.currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }

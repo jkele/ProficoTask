@@ -36,10 +36,9 @@ class GenreRecyclerAdapter(
         val popularGame = genre.games.maxByOrNull { it.added }
 
         holder.binding.tvGenreTitle.text = genre.name
+        holder.binding.tvPopularGame.text = popularGame?.name
         holder.binding.ivGenreImage.load(genre.imageBackground)
         holder.binding.ivGenreImage.imageAlpha = 190
-
-        holder.binding.tvPopularGame.text = popularGame?.name
 
         if (selectedPositions.get(position, false)) {
             holder.binding.root.foreground =

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import hr.algebra.proficotask.adapter.ALL_GENRES
 import hr.algebra.proficotask.adapter.FAVORITE_GENRES
@@ -59,6 +61,14 @@ class SettingsActivity : AppCompatActivity() {
 
         binding.btnLogOut.setOnClickListener {
             mAuth.signOut()
+
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+            val googleSignInClient = GoogleSignIn.getClient(this, gso)
+            googleSignInClient.signOut()
+
             this.startActivity<LoginActivity>()
         }
 

@@ -14,8 +14,8 @@ class SplashScreenViewModel(application: Application): AndroidViewModel(applicat
         repository = GenreRepository(genreDao)
     }
 
-    fun isGenreTableEmpty(): Boolean {
-        return repository.isGenreTableEmpty()
+    fun isGenreTableEmpty(userId: String): Boolean {
+        return repository.isGenreTableEmpty(userId)
     }
 
 }

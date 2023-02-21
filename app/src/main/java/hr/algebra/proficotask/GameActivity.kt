@@ -11,6 +11,8 @@ import hr.algebra.proficotask.helpers.EXTRA_GAME_ID
 import hr.algebra.proficotask.network.model.Game
 import hr.algebra.proficotask.viewmodel.GameViewModel
 import java.lang.StringBuilder
+import java.text.SimpleDateFormat
+import java.util.*
 
 class GameActivity : AppCompatActivity() {
 
@@ -31,6 +33,7 @@ class GameActivity : AppCompatActivity() {
         viewModel.gameDetails.observe(this) { game ->
             binding.ivGameImage.load(game.backgroundImage)
             binding.tvGameTitle.text = game.name
+            binding.tvReleaseDate.text = formatReleaseDate(game.released)
             binding.tvMetacritic.text = game.metacritic.toString()
             binding.tvAbout.text = game.descriptionRaw
             binding.tvPlatforms.text = getPlatformsString(game)
@@ -41,6 +44,15 @@ class GameActivity : AppCompatActivity() {
         }
 
         viewModel.getGameDetails(selectedGameId)
+    }
+
+    private fun formatReleaseDate(releaseDate: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+
+        val inputDate = inputFormat.parse(releaseDate)
+
+        return outputFormat.format(inputDate!!)
     }
 
     private fun setEventImages() {

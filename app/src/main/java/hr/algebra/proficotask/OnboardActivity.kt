@@ -22,10 +22,10 @@ class OnboardActivity : AppCompatActivity() {
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-        setupMenu()
         setupListeners()
 
         mAuth = FirebaseAuth.getInstance()
+        setupMenu()
 
         binding.rvGenres.layoutManager = LinearLayoutManager(this)
 
@@ -46,7 +46,7 @@ class OnboardActivity : AppCompatActivity() {
     }
 
     private fun setupMenu() {
-        val genreCount = viewModel.getNumberOfGenres()
+        val genreCount = viewModel.getNumberOfGenresForUser(mAuth.currentUser!!.uid)
         if (genreCount == 0) {
             binding.tvGenresSelected.text = getString(R.string.no_genres_selected)
             binding.btnContinue.isEnabled = false

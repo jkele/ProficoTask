@@ -22,7 +22,7 @@ interface GenreDao {
     @Query("DELETE FROM genres WHERE id = :genreId")
     fun deleteGenreById(genreId: Int)
 
-    @Query("SELECT COUNT(*) FROM genres")
-    fun getNumberOfGenres(): Int
+    @Query("SELECT COUNT(*) FROM genres WHERE userId = :userId")
+    fun getNumberOfGenresForUser(userId: String): Int
 
 }
