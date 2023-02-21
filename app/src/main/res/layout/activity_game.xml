@@ -12,6 +12,16 @@
         android:background="#151515"
         tools:context=".GameActivity">
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_marginBottom="600dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <ImageView
             android:id="@+id/ivGameImage"
             android:layout_width="match_parent"

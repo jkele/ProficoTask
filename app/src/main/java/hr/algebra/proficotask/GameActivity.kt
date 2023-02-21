@@ -38,9 +38,9 @@ class GameActivity : AppCompatActivity() {
             binding.tvAbout.text = game.descriptionRaw
             binding.tvPlatforms.text = getPlatformsString(game)
             binding.tvGenres.text = getGenreString(game)
-
-
             setEventImages()
+
+            binding.progressBar.visibility = ProgressBar.GONE
         }
 
         viewModel.getGameDetails(selectedGameId)

@@ -3,6 +3,7 @@ package hr.algebra.proficotask
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ProgressBar
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
@@ -30,6 +31,8 @@ class OnboardActivity : AppCompatActivity() {
         binding.rvGenres.layoutManager = LinearLayoutManager(this)
 
         viewModel.genreList.observe(this) { genreList ->
+            binding.progressBar.visibility = ProgressBar.VISIBLE
+
             val adapter = GenreRecyclerAdapter(this, genreList, {
                 viewModel.insertFavoriteGenre(it, mAuth.currentUser!!.uid)
                 setupMenu()
@@ -40,6 +43,7 @@ class OnboardActivity : AppCompatActivity() {
 
             binding.rvGenres.adapter = adapter
 
+            binding.progressBar.visibility = ProgressBar.GONE
         }
 
         viewModel.getGenres()

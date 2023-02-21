@@ -1,9 +1,11 @@
 package hr.algebra.proficotask
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ProgressBar
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import hr.algebra.proficotask.adapter.GamePagingAdapter
@@ -36,10 +38,22 @@ class MainActivity : AppCompatActivity() {
         binding.rvGames.layoutManager = LinearLayoutManager(this)
         binding.rvGames.adapter = pagingAdapter
 
+        setupProgressBar()
+
         lifecycleScope.launch {
             val flow = viewModel.getGamesFlow(mAuth.currentUser!!.uid)
             flow.collectLatest {
                 pagingAdapter.submitData(it)
+            }
+        }
+    }
+
+    private fun setupProgressBar() {
+        pagingAdapter.addLoadStateListener {
+            if (it.refresh is LoadState.Loading) {
+                binding.progressBar.visibility = ProgressBar.VISIBLE
+            } else {
+                binding.progressBar.visibility = ProgressBar.GONE
             }
         }
     }
