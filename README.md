@@ -1,7 +1,8 @@
 # ProficoTask
 
 This repository was used to solve an Android hiring task made by the Profico company. 
-The task was to create an app which will allow users to select their favorite video game genres. 
+The task was to create an app which will allow users to select their favorite video game genres. After selecting favorite genres,
+the user can browse all video games within the selected genres. Genre selection can be changed inside the settings.
 
 ### Features
 - **Sign in**
@@ -15,5 +16,8 @@ The task was to create an app which will allow users to select their favorite vi
   - Inside the settings, the user can change his genre selection and log out of his account
   
 ### Technologies
-- Retrofit - used for API consumation
-- Firebase - used for 
+- Retrofit - used for fetching data from the provided API
+- Firebase - used to implement user sign in with a Google account
+- Coil - used to display images
+- Room database - used to store selected genres locally
+- Paging - used to display a list of video games
